@@ -12,7 +12,7 @@ npm-debug.log*
 /tmp
 /public/license/.licenses
 /public/license/bower.LICENSES
-/public/dist
+# /public/dist
 
 # Docker
 !/docker/.env

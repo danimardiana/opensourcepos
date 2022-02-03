@@ -24,16 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ospos_permissions`
---
-
-CREATE TABLE `ospos_permissions` (
-  `permission_id` varchar(255) NOT NULL,
-  `module_id` varchar(255) NOT NULL,
-  `location_id` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Dumping data for table `ospos_permissions`
 --
 

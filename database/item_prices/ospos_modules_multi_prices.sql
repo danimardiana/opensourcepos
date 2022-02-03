@@ -24,17 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ospos_modules`
---
-
-CREATE TABLE `ospos_modules` (
-  `name_lang_key` varchar(255) NOT NULL,
-  `desc_lang_key` varchar(255) NOT NULL,
-  `sort` int(10) NOT NULL,
-  `module_id` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Dumping data for table `ospos_modules`
 --
 

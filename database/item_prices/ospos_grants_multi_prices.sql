@@ -24,16 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ospos_grants`
---
-
-CREATE TABLE `ospos_grants` (
-  `permission_id` varchar(255) NOT NULL,
-  `person_id` int(10) NOT NULL,
-  `menu_group` varchar(32) DEFAULT 'home'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Dumping data for table `ospos_grants`
 --
 
