@@ -798,4 +798,112 @@ function get_cash_up_data_row($cash_up)
 		)
 	);
 }
+
+
+/*
+Get the header for the multi_prices tabular view
+*/
+function get_multi_prices_manage_table_headers()
+{
+	$CI =& get_instance();
+
+	$headers = array(
+		array('multi_price_id' => $CI->lang->line('common_id')),
+		array('name' => $CI->lang->line('common_name')),
+		array('description' => $CI->lang->line('common_desc')),
+	);
+
+	return transform_headers($headers);
+}
+
+/*
+Get the html data row for the multi_prices
+*/
+function get_multi_prices_data_row($multi_price)
+{
+	$CI =& get_instance();
+	$controller_name = strtolower(get_class($CI));
+
+	return array (
+		'multi_price_id' => $multi_price->multi_price_id,
+		'name' => $multi_price->name,
+		'description' => $multi_price->description,
+		'edit' => anchor($controller_name."/view/$multi_price->multi_price_id", '<span class="glyphicon glyphicon-edit"></span>',
+			array('class'=>'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title'=>$CI->lang->line($controller_name.'_update'))
+		)
+	);
+}
+
+
+/*
+Get the header for the items tabular view
+*/
+function get_item_prices_manage_table_headers()
+{
+	$CI =& get_instance();
+
+	$definition_names = $CI->Attribute->get_definitions_by_flags(Attribute::SHOW_IN_ITEMS);
+
+	$headers = array(
+		array('item_price_id' => $CI->lang->line('common_id')),
+		array('item_name' => $CI->lang->line('items_name')),
+		array('multi_price_name' => $CI->lang->line('multi_prices_name')),
+		array('item_cost_price' => $CI->lang->line('items_cost_price')),
+		array('unit_price' => $CI->lang->line('item_prices_unit_price')),
+	);
+
+	$headers[] = array('item_pic' => $CI->lang->line('items_image'), 'sortable' => FALSE);
+
+	return transform_headers($headers);
+}
+
+/*
+Get the html data row for the item
+*/
+function get_item_price_data_row($item_prices)
+{
+	$CI =& get_instance();
+
+	$controller_name = strtolower(get_class($CI));
+
+	$image = NULL;
+	if($item_prices->pic_filename != '')
+	{
+		$ext = pathinfo($item_prices->pic_filename, PATHINFO_EXTENSION);
+		if($ext == '')
+		{
+			// legacy
+			$images = glob('./uploads/item_pics/' . $item_prices->pic_filename . '.*');
+		}
+		else
+		{
+			// preferred
+			$images = glob('./uploads/item_pics/' . $item_prices->pic_filename);
+		}
+
+		if(sizeof($images) > 0)
+		{
+			$image .= '<a class="rollover" href="'. base_url($images[0]) .'"><img src="'.site_url('items/pic_thumb/' . pathinfo($images[0], PATHINFO_BASENAME)) . '"></a>';
+		}
+	}
+
+	$definition_names = $CI->Attribute->get_definitions_by_flags(Attribute::SHOW_IN_ITEMS);
+
+	$columns = array (
+		'item_price_id' => $item_prices->item_price_id,
+		'item_name' => $item_prices->item_name,
+		'multi_price_name' => $item_prices->multi_price_name,
+		'item_cost_price' => to_currency($item_prices->item_cost_price),
+		'unit_price' => to_currency($item_prices->unit_price),
+		'item_pic' => $image
+	);
+
+	$icons = array(
+		'edit' => anchor($controller_name."/view/$item_prices->item_id", '<span class="glyphicon glyphicon-edit"></span>',
+			array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name.'_update'))
+		)
+	);
+
+	return $columns + expand_attribute_values($definition_names, (array) $item) + $icons;
+}
 ?>

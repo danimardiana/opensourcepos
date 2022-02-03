@@ -1,0 +1,15 @@
+name: opensourcepos
+recipe: lamp
+config:
+  php: '7.4'
+  composer_version: '1.10.1'
+  webroot: public
+  database: 'mysql:5.7'
+services:
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+proxy:
+  pma:
+    - pma.opensourcepos.devo

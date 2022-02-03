@@ -258,7 +258,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------
@@ -359,7 +359,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = getenv('ENCRYPTION_KEY') ? getenv('ENCRYPTION_KEY') : '';
+$config['encryption_key'] = getenv('ENCRYPTION_KEY') ? getenv('ENCRYPTION_KEY') : '38a2d9d8eadb517ee19daf4ad1a5557306fb38b641fc867464cad4ea8674137f';
 
 /*
 |--------------------------------------------------------------------------
