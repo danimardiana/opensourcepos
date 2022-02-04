@@ -86,6 +86,7 @@ $lang["multi_prices_remove_image"] = "Remove Image";
 $lang["multi_prices_reorder_level"] = "Reorder Level";
 $lang["multi_prices_reorder_level_number"] = "Reorder Level must be a number.";
 $lang["multi_prices_reorder_level_required"] = "Reorder Level is a required field.";
+$lang["multi_prices_required"] = "MP Name required.";
 $lang["multi_prices_retrive_item_info"] = "Retrieve Multi Price Info";
 $lang["multi_prices_sales_tax_1"] = "Sales Tax";
 $lang["multi_prices_sales_tax_2"] = "Sales Tax 2";

@@ -899,7 +899,7 @@ function get_item_price_data_row($item_prices)
 	);
 
 	$icons = array(
-		'edit' => anchor($controller_name."/view/$item_prices->item_id", '<span class="glyphicon glyphicon-edit"></span>',
+		'edit' => anchor($controller_name."/view/$item_prices->item_price_id", '<span class="glyphicon glyphicon-edit"></span>',
 			array('class' => 'modal-dlg', 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name.'_update'))
 		)
 	);

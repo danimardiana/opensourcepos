@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Feb 03, 2022 at 07:15 AM
+-- Generation Time: Feb 03, 2022 at 11:02 AM
 -- Server version: 5.7.29
 -- PHP Version: 7.4.20
 
@@ -45,6 +45,7 @@ CREATE TABLE `ospos_item_prices` (
 --
 ALTER TABLE `ospos_item_prices`
   ADD PRIMARY KEY (`item_price_id`),
+  ADD UNIQUE KEY `multi_price_id_2` (`multi_price_id`,`item_id`),
   ADD KEY `deleted` (`deleted`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `multi_price_id` (`multi_price_id`);

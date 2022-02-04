@@ -4,7 +4,11 @@ LABEL maintainer="jekkos"
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libicu-dev \
     libgd-dev \
-    openssl
+    openssl \
+    wget \
+    vim \
+    unzip \
+    git
 
 RUN a2enmod rewrite headers
 RUN docker-php-ext-install mysqli bcmath intl gd
@@ -13,6 +17,7 @@ RUN echo "date.timezone = \"\${PHP_TIMEZONE}\"" > /usr/local/etc/php/conf.d/time
 WORKDIR /app
 COPY . /app
 RUN ln -s /app/*[^public] /var/www && rm -rf /var/www/html && ln -nsf /app/public /var/www/html
+RUN mkdir -p /app/vendor && chown -R www-data:www-data /app/vendor
 RUN chmod -R 750 /app/public/uploads /app/application/logs && chown -R www-data:www-data /app/public /app/application
 
 FROM ospos AS ospos_test
