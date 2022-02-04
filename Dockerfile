@@ -23,6 +23,9 @@ RUN cp /app/application/config/.env.develop /app/application/config/.env
 
 RUN chmod -R 750 /app/public/uploads /app/application/logs && chown -R www-data:www-data /app/public /app/application
 
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+RUN composer install -d/app 
+
 FROM ospos AS ospos_test
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
